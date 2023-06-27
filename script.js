@@ -3,16 +3,15 @@ check();
 function check() {
   const username = localStorage.getItem("username");
   const password = localStorage.getItem("password");
+  const existingUserButton = document.getElementById("existing");
 
   if (username && password) {
-    const existingUserButton = document.createElement("button");
-    existingUserButton.id = "existing";
-    existingUserButton.textContent = "Login as existing user";
+    existingUserButton.style.display = "inline"; // Show the button if there are saved user details
     existingUserButton.addEventListener("click", () => {
       alert("Logged in as " + username);
     });
-
-    document.body.appendChild(existingUserButton);
+  } else {
+    existingUserButton.style.display = "none"; // Hide the button if there are no saved user details
   }
 }
 
